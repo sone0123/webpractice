@@ -1,5 +1,5 @@
-# A Notes on HTML/CSS/JavaScript
+# Notes on HTML/CSS/JavaScript
 
-A website to practice HTML, CSS, and JavaScript.
+A website to practice HTML, CSS, and JavaScript:
 
-- https://sone0123.github.io/webpractice
+https://sone0123.github.io/webpractice
