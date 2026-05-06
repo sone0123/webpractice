@@ -17,7 +17,7 @@
     </header>
     <nav>
         <ul>
-            <li><a href="/">ホーム</a></li>
+            <li><a href="../index.html">ホーム</a></li>
             <li><a href="design.html">デザインシステム</a></li>
             <li><a href="html.html">HTML</a></li>
             <li><a href="css.html" aria-current="true">CSS</a></li>
@@ -144,7 +144,7 @@ a[href$=".org" i] {
 }
 
 /* &lt;a&gt; 要素で class 属性に "logo" という語が含まれているもの */
-a[class&tilde;="logo"] {
+a[class~="logo"] {
     padding: 2px;
 }
         </code></pre>
@@ -184,7 +184,7 @@ h1 + p {
 }
 
 /* &lt;h1&gt; 要素の後のすべての要素である &lt;p&gt; 要素 */
-h1 &tilde; p {
+h1 ~ p {
     color: teal;
 }
         </code></pre>
