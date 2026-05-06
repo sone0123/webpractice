@@ -4,23 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wght@100..900&display=swap" rel="stylesheet">
     <title>CSS</title>
 </head>
 <body>
-    <h1>CSS</h1>
-    <p><strong>CSS</strong> (Cascading Style Sheets) とはHTML要素を選択的にスタイルするためのスタイルシート言語である。</p>
-    <h2>目次</h2>
-    <ul>
-        <li><a href="#structure">CSSの構造</a></li>
-        <li><a href="#usage">CSSの使い方</a></li>
-        <li><a href="#selectors">セレクターの指定方法</a></li>
-        <li><a href="#font">フォントの設定</a></li>
-        <li><a href="#grid-layout">グリッドレイアウト</a></li>
-        <li><a href="#references">参考文献</a></li>
-    </ul>
-    <h2 id="structure">CSSの構造</h2>
-    <p>CSSファイル（<code>.css</code>）は次のような構造を持つ：</p>
-    <pre><code>
+    <header>
+        Notes on HTML/CSS/JavaScript
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">ホーム</a></li>
+            <li><a href="design.html">デザインシステム</a></li>
+            <li><a href="html.html">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="js.html">JavaScript</a></li>
+            <li><a href="info.html">周辺情報</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>CSS</h1>
+        <p><strong>CSS</strong> (Cascading Style Sheets) とはHTML要素を選択的にスタイルするためのスタイルシート言語である。</p>
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#structure">CSSの構造</a></li>
+            <li><a href="#usage">CSSの使い方</a></li>
+            <li><a href="#selectors">セレクターの指定方法</a></li>
+            <li><a href="#font">フォントの設定</a></li>
+            <li><a href="#grid-layout">グリッドレイアウト</a></li>
+            <li><a href="#references">参考文献</a></li>
+        </ul>
+        <h2 id="structure">CSSの構造</h2>
+        <p>CSSファイル（<code>.css</code>）は次のような構造を持つ：</p>
+        <pre><code>
 h1 {
     color: red;
     font-size: 2.5em;
@@ -31,74 +48,74 @@ p {
     padding: 5px;
     background: midnightblue;
 }
-    </code></pre>
-    <p>HTML要素やその属性などを<strong>セレクター</strong>と呼び，スタイルを適用したいセレクターに対して<strong>プロパティ</strong>とその<strong>プロパティ値</strong>を<strong>宣言</strong>する。</p>
-    <pre><code>
+        </code></pre>
+        <p>HTML要素やその属性などを<strong>セレクター</strong>と呼び，スタイルを適用したいセレクターに対して<strong>プロパティ</strong>とその<strong>プロパティ値</strong>を<strong>宣言</strong>する。</p>
+        <pre><code>
 セレクター {
     プロパティ1: プロパティ値1;
     プロパティ2: プロパティ値2;
-     ...
+    ...
 }
-    </code></pre>
-    <p>利用可能なすべてのセレクターは<a href="https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Selectors" target="_blank">CSS セレクター - CSS | MDN</a>を参照のこと。</p>
-    <p>利用可能なすべてのプロパティは<a href="https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties" target="_blank">CSS プロパティ - CSS | MDN</a>を参照のこと。</p>
+        </code></pre>
+        <p>利用可能なすべてのセレクターは<a href="https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Selectors" target="_blank">CSS セレクター - CSS | MDN</a>を参照のこと。</p>
+        <p>利用可能なすべてのプロパティは<a href="https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties" target="_blank">CSS プロパティ - CSS | MDN</a>を参照のこと。</p>
 
-    <h2 id="usage">CSSの使い方</h2>
-    <h3>外部CSSファイルの使用</h3>
-    <p><code>.html</code>ファイルの<code>&lt;head&gt;</code>要素内に次の<code>&lt;link&gt;</code>要素を追加する。</p>
-    <pre><code>
+        <h2 id="usage">CSSの使い方</h2>
+        <h3>外部CSSファイルの使用</h3>
+        <p><code>.html</code>ファイルの<code>&lt;head&gt;</code>要素内に次の<code>&lt;link&gt;</code>要素を追加する。</p>
+        <pre><code>
 &lt;link rel="stylesheet" href="styles.css" /&gt;
-    </code></pre>
-    <h3>内部CSSの使用</h3>
-    <p><code>.html</code>ファイルの<code>&lt;head&gt;</code>要素内に次の<code>&lt;style&gt;</code>要素を追加する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>内部CSSの使用</h3>
+        <p><code>.html</code>ファイルの<code>&lt;head&gt;</code>要素内に次の<code>&lt;style&gt;</code>要素を追加する。</p>
+        <pre><code>
 &lt;style&gt;
     h1 {
         color: red;
         font-size: 2.5em;
     }
 &lt;/style&gt;
-    </code></pre>
-    <h3>インラインCSSの使用</h3>
-    <p>HTML要素の<code>style</code>属性にCSSプロパティを指定する。この方法は可能な限り避けるべきである。</p>
-    <pre><code>
+        </code></pre>
+        <h3>インラインCSSの使用</h3>
+        <p>HTML要素の<code>style</code>属性にCSSプロパティを指定する。この方法は可能な限り避けるべきである。</p>
+        <pre><code>
 &lt;h1 style="color: red; font-size: 2.5em;"&gt;見出し&lt;/h1&gt;
-    </code></pre>
+        </code></pre>
 
-    <h2 id="selectors">セレクターの指定方法</h2>
-    <h3>要素型セレクター</h3>
-    <p>HTML要素の名前を使ってスタイルを適用する。</p>
-    <pre><code>
+        <h2 id="selectors">セレクターの指定方法</h2>
+        <h3>要素型セレクター</h3>
+        <p>HTML要素の名前を使ってスタイルを適用する。</p>
+        <pre><code>
 h1 {
     color: red;
     font-size: 2.5em;
 }
-    </code></pre>
-    <h3>クラスセレクター</h3>
-    <p>HTML要素の<code>class</code>属性の値を使ってスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>クラスセレクター</h3>
+        <p>HTML要素の<code>class</code>属性の値を使ってスタイルを適用する。</p>
+        <pre><code>
 &lt;h1 class="important"&gt;見出し&lt;/h1&gt;
-    </code></pre>
-    <pre><code>
+        </code></pre>
+        <pre><code>
 .important {
     color: red;
     font-size: 2.5em;
 }
-    </code></pre>
-    <h3>IDセレクター</h3>
-    <p>HTML要素の<code>id</code>属性の値を使ってスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>IDセレクター</h3>
+        <p>HTML要素の<code>id</code>属性の値を使ってスタイルを適用する。</p>
+        <pre><code>
 &lt;h1 id="main-heading"&gt;見出し&lt;/h1&gt;
-    </code></pre>
-    <pre><code>
+        </code></pre>
+        <pre><code>
 #main-heading {
     color: red;
     font-size: 2.5em;
 }
-    </code></pre>
-    <h3>属性セレクター</h3>
-    <p>HTML要素の属性の値を使ってスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>属性セレクター</h3>
+        <p>HTML要素の属性の値を使ってスタイルを適用する。</p>
+        <pre><code>
 /* &lt;a&gt; 要素で title 属性を持つもの */
 a[title] {
     color: purple;
@@ -128,32 +145,32 @@ a[href$=".org" i] {
 a[class&tilde;="logo"] {
     padding: 2px;
 }
-    </code></pre>
-    <h3>擬似クラスセレクター</h3>
-    <p>HTML要素の状態を使ってスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>擬似クラスセレクター</h3>
+        <p>HTML要素の状態を使ってスタイルを適用する。</p>
+        <pre><code>
 a:hover {
     color: red;
 }
-    </code></pre>
-    <h3>擬似要素セレクター</h3>
-    <p>HTML要素の特定の部分を使ってスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>擬似要素セレクター</h3>
+        <p>HTML要素の特定の部分を使ってスタイルを適用する。</p>
+        <pre><code>
 p::first-line {
     font-weight: bold;
 }
-    </code></pre>
-    <h3>全称セレクター</h3>
-    <p>すべての要素にスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>全称セレクター</h3>
+        <p>すべての要素にスタイルを適用する。</p>
+        <pre><code>
 * {
     margin: 0;
     padding: 0;
 }
-    </code></pre>
-    <h3>複雑セレクター</h3>
-    <p>複数のセレクターを組み合わせてスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>複雑セレクター</h3>
+        <p>複数のセレクターを組み合わせてスタイルを適用する。</p>
+        <pre><code>
 /* &lt;li&gt; 要素の中の &lt;em&gt; 要素 */
 li em {
     color: rebeccapurple;
@@ -168,53 +185,53 @@ h1 + p {
 h1 &tilde; p {
     color: teal;
 }
-    </code></pre>
-    <h3>セレクターリスト</h3>
-    <p>複数のセレクターをコンマで区切って一度にスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>セレクターリスト</h3>
+        <p>複数のセレクターをコンマで区切って一度にスタイルを適用する。</p>
+        <pre><code>
 h1, h2, h3 {
     color: blue;
 }
-    </code></pre>
-    <h3>アットルール</h3>
-    <p>特定の条件下でスタイルを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>アットルール</h3>
+        <p>特定の条件下でスタイルを適用する。</p>
+        <pre><code>
 @media (width >= 30em) {
     body {
-      background-color: blue;
+    background-color: blue;
     }
 }
-    </code></pre>
+        </code></pre>
 
-    <h2 id="font">フォントの設定</h2>
-    <p>フォントは可用性を保証されないので複数のフォントを指定することが推奨される。</p>
-    <pre><code>
+        <h2 id="font">フォントの設定</h2>
+        <p>フォントは可用性を保証されないので複数のフォントを指定することが推奨される。</p>
+        <pre><code>
 p {
     font-family: "Trebuchet MS", Verdana, sans-serif;
 }
-    </code></pre>
-    <h3>既定のフォント</h3>
-    <p>実際に使用される正確なフォントはブラウザ次第である。</p>
-    <ul>
-        <li>serif</li>
-        <li>sans-serif</li>
-        <li>monospace</li>
-        <li>cursive</li>
-        <li>fantasy</li>
-    </ul>
-    <h3>ウェブセーフフォント</h3>
-    <p>すべてのシステムで利用できるフォント（ウェブセーフフォント）の種類は限られている。</p>
-    <ul>
-        <li>Arial</li>
-        <li>Courier New</li>
-        <li>Georgia</li>
-        <li>Times New Roman</li>
-        <li>Trebuchet MS</li>
-        <li>Verdana</li>
-    </ul>
-    <h3>ウェブフォント</h3>
-    <p>ウェブ上で利用できるフォントファイルを指定してアクセスしたときにダウンロードさせることができる。</p>
-    <pre><code>
+        </code></pre>
+        <h3>既定のフォント</h3>
+        <p>実際に使用される正確なフォントはブラウザ次第である。</p>
+        <ul>
+            <li>serif</li>
+            <li>sans-serif</li>
+            <li>monospace</li>
+            <li>cursive</li>
+            <li>fantasy</li>
+        </ul>
+        <h3>ウェブセーフフォント</h3>
+        <p>すべてのシステムで利用できるフォント（ウェブセーフフォント）の種類は限られている。</p>
+        <ul>
+            <li>Arial</li>
+            <li>Courier New</li>
+            <li>Georgia</li>
+            <li>Times New Roman</li>
+            <li>Trebuchet MS</li>
+            <li>Verdana</li>
+        </ul>
+        <h3>ウェブフォント</h3>
+        <p>ウェブ上で利用できるフォントファイルを指定してアクセスしたときにダウンロードさせることができる。</p>
+        <pre><code>
 @font-face {
     font-family: "zantrokeregular";
     src:
@@ -227,18 +244,25 @@ p {
 html {
     font-family: "zantrokeregular", "Bitstream Vera Serif", serif;
 }
-    </code></pre>
+        </code></pre>
+        <h3>オンラインフォントサービス</h3>
+        <p>Google Fontsの使用例を以下に示す。</p>
+        <ol>
+            <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a>でフォントを選ぶ</li>
+            <li>フォントファミリーを選ぶ</li>
+            <li>HTMLコードをHTMLファイルの&lt;head&gt;要素内にコピペする</li>
+        </ol>
 
-    <h2 id="grid-layout">グリッドレイアウト</h2>
-    <p>グリッドは列と行およびそれらの間の間隔を指定してレイアウトを制御する。</p>
-    <pre><code>
+        <h2 id="grid-layout">グリッドレイアウト</h2>
+        <p>グリッドは列と行およびそれらの間の間隔を指定してレイアウトを制御する。</p>
+        <pre><code>
 .container {
     display: grid;
 }
-    </code></pre>
-    <h3>12カラムグリッドシステム</h3>
-    <p>例として次の<code>.html</code>ファイルによく使われる12カラムグリッドシステムを適用する。</p>
-    <pre><code>
+        </code></pre>
+        <h3>12カラムグリッドシステム</h3>
+        <p>例として次の<code>.html</code>ファイルによく使われる12カラムグリッドシステムを適用する。</p>
+        <pre><code>
 &lt;div class="wrapper"&gt;
     &lt;header class="main-head"&gt;ヘッダー&lt;/header&gt;
     &lt;nav class="main-nav"&gt;
@@ -251,30 +275,30 @@ html {
     &lt;article class="content"&gt;
         &lt;h1&gt;メイン記事領域&lt;/h1&gt;
         &lt;p&gt;
-        このレイアウトでは，幅が 500 ピクセル以下の画面では，領域をソース順に表示します。グリッドとグリッド上のアイテムの配置を再定義することで，2 列レイアウト，3 列レイアウトへと変化していきます。
+            このレイアウトでは，幅が 500 ピクセル以下の画面では，領域をソース順に表示します。グリッドとグリッド上のアイテムの配置を再定義することで，2 列レイアウト，3 列レイアウトへと変化していきます。
         &lt;/p&gt;
     &lt;/article&gt;
     &lt;aside class="side"&gt;サイドバー&lt;/aside&gt;
     &lt;div class="ad"&gt;広告&lt;/div&gt;
     &lt;footer class="main-footer"&gt;フッター&lt;/footer&gt;
 &lt;/div&gt;
-    </code></pre>
-    <p>12列のグリッドを作成し，各列に<code>1fr</code>単位のスペースを設定し，各行の開始位置に<code>col-start</code>という名前を付ける。</p>
-    <pre><code>
+        </code></pre>
+        <p>12列のグリッドを作成し，各列に<code>1fr</code>単位のスペースを設定し，各行の開始位置に<code>col-start</code>という名前を付ける。</p>
+        <pre><code>
 .wrapper {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: 20px;
 }
-    </code></pre>
-    <p>モバイルファーストで最も狭い画面ではHTML要素の順序のままグリッド全体が表示されるようにする。</p>
-    <pre><code>
+        </code></pre>
+        <p>モバイルファーストで最も狭い画面ではHTML要素の順序のままグリッド全体が表示されるようにする。</p>
+        <pre><code>
 .wrapper > * {
     grid-column: col-start / span 12;
 }
-    </code></pre>
-    <p>次のブレイクポイントでは2列のレイアウトにする。</p>
-    <pre><code>
+        </code></pre>
+        <p>次のブレイクポイントでは2列のレイアウトにする。</p>
+        <pre><code>
 @media (width >= 500px) {
     .side {
         grid-column: col-start / span 3;
@@ -293,9 +317,9 @@ html {
         justify-content: space-between;
     }
 }
-    </code></pre>
-    <p>さらに次のブレイクポイントでは3列のレイアウトにする。</p>
-    <pre><code>
+        </code></pre>
+        <p>さらに次のブレイクポイントでは3列のレイアウトにする。</p>
+        <pre><code>
 @media (width >= 700px) {
     .main-nav {
         grid-column: col-start / span 2;
@@ -320,14 +344,24 @@ html {
         flex-direction: column;
     }
 }
-    </code></pre>
+        </code></pre>
 
-    <h2 id="references">参考文献</h2>
-    <ul>
-        <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Styling_basics" target="_blank">CSS によるスタイル設定の基本 - ウェブ開発の学習 | MDN</a></li>
-        <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Text_styling" target="_blank">テキストの装飾 - ウェブ開発の学習 | MDN</a></li>
-        <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/CSS_layout" target="_blank">CSS のレイアウト - ウェブ開発の学習 | MDN</a></li>
-        <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Grid_layout/Common_grid_layouts">グリッドを使用したよくあるレイアウトの実現 - CSS | MDN</a></li>
-    </ul>
+        <h2 id="references">参考文献</h2>
+        <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Styling_basics" target="_blank">CSS によるスタイル設定の基本 - ウェブ開発の学習 | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Text_styling" target="_blank">テキストの装飾 - ウェブ開発の学習 | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/CSS_layout" target="_blank">CSS のレイアウト - ウェブ開発の学習 | MDN</a></li>
+            <li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Grid_layout/Common_grid_layouts" target="_blank">グリッドを使用したよくあるレイアウトの実現 - CSS | MDN</a></li>
+        </ul>
+    </main>
+    <aside>
+        サイドバー
+    </aside>
+    <div class="ad">
+        広告
+    </div>
+    <footer>
+        &copy; 2026 Sone. All rights reserved.
+    </footer>
 </body>
 </html>
