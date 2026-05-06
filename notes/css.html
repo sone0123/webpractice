@@ -13,7 +13,7 @@
 </head>
 <body id="top">
     <header>
-        Notes on HTML/CSS/JavaScript [ver.0.2]
+        Notes on HTML/CSS/JavaScript [ver.0.3]
     </header>
     <nav>
         <ul>
@@ -198,9 +198,9 @@ h1, h2, h3 {
         <h3>アットルール</h3>
         <p>特定の条件下でスタイルを適用する。</p>
         <pre><code class="language-css">
-@media (width >= 30em) {
+@media (width &gt;= 30em) {
     body {
-    background-color: blue;
+        background-color: blue;
     }
 }
         </code></pre>
@@ -295,7 +295,7 @@ html {
         </code></pre>
         <p>モバイルファーストで最も狭い画面ではHTML要素の順序のままグリッド全体が表示されるようにする。</p>
         <pre><code class="language-css">
-.wrapper > * {
+.wrapper &gt; * {
     grid-column: col-start / span 12;
 }
         </code></pre>
