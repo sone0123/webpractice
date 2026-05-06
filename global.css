@@ -18,15 +18,16 @@ html {
     font-family: "Noto Sans JP", sans-serif;
     background-color: var(--color-background);
     color: var(--color-common);
+    scroll-behavior: smooth;
 }
 
 /* レイアウト */
 body {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
-    gap: 0 20px;
+    gap: 20px;
 
-    max-width: 1200px;
+    max-width: 1000px;
     padding: 10px;
 }
 
@@ -93,10 +94,18 @@ nav a[aria-current]::after {
     aside {
         grid-column: col-start / span 3;
         grid-row: 3;
+
+        align-self: start;
+        position: sticky;
+        top: 20px;
     }
     .ad {
         grid-column: col-start / span 3;
         grid-row: 4;
+
+        align-self: end;
+        position: sticky;
+        bottom: 20px;
     }
     main,
     footer {
@@ -111,6 +120,7 @@ nav a[aria-current]::after {
 h1 {
     border-bottom: 4px solid var(--color-primary);
     padding-bottom: 10px;
+    margin-top: 0;
 }
 
 h2 {
@@ -174,13 +184,6 @@ a[target="_blank"]::after {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 48 35' role='img'><path d='M22 6V9H9V39H39V26H42V42H6V6H22ZM42 6V20H39V11.2L21 29L19 27L36.8 9H28V6H42Z'/></svg>");
 }
 
-pre {
-    background-color: var(--color-common);
-    white-space: pre-wrap;
-    padding: 0 1rem;
-    border-radius: 4px;
-}
-
 code {
     font-family: "Noto Sans Mono", monospace;
     font-size: 0.9rem;
@@ -191,9 +194,14 @@ code {
     border-radius: 4px;
 }
 
-pre code {
-    background-color: var(--color-common);
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
+/* prism.jsのスタイルを上書き */
+code[class*="language-"],
+pre[class*="language-"] {
+    font-family: "Noto Sans Mono", monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    line-height: 1.2;
+    padding: 0 1em;
+    border-radius: 4px;
 }
