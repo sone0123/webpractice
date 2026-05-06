@@ -3,21 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.js"></script>
     <link rel="stylesheet" href="../global.css">
     <title>HTML</title>
 </head>
-<body>
-    <h1>HTML</h1>
-    <p><strong>HTML</strong> (HyperText Markup Language) とはコンテンツの構造を定義するマークアップ言語である。</p>
-    <h2>目次</h2>
-    <ul>
-        <li><a href="#structure">HTMLの構造</a></li>
-        <li><a href="#elements">主なHTML要素</a></li>
-        <li><a href="#references">参考文献</a></li>
-    </ul>
-    <h2 id="structure">HTMLの構造</h2>
-    <p>HTMLファイル（<code>.html</code>）は次のような構造を持つ：</p>
-    <pre><code>
+<body id="top">
+    <header>
+        Notes on HTML/CSS/JavaScript [ver.0.3]
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="design.html">デザインシステム</a></li>
+            <li><a href="html.html" aria-current="true">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="js.html">JavaScript</a></li>
+            <li><a href="info.html">周辺情報</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>HTML</h1>
+        <p><strong>HTML</strong> (HyperText Markup Language) とはコンテンツの構造を定義するマークアップ言語である。</p>
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#structure">HTMLの構造</a></li>
+            <li><a href="#elements">主なHTML要素</a></li>
+            <li><a href="#references">参考文献</a></li>
+        </ul>
+        <h2 id="structure">HTMLの構造</h2>
+        <p>HTMLファイル（<code>.html</code>）は次のような構造を持つ：</p>
+        <pre><code class="language-html">
 &lt;!doctype html&gt;
 &lt;html lang="ja"&gt;
     &lt;head&gt;
@@ -31,230 +50,244 @@
         &lt;img src="" alt="テスト画像" /&gt;
     &lt;/body&gt;
 &lt;/html&gt;
-    </code></pre>
-    <p>文章や見出し，画像などの<strong>コンテンツ</strong>は<strong>開始タグ</strong>と<strong>終了タグ</strong>で囲まれるか，<strong>自己終了タグ</strong>で表され<strong>HTML要素</strong>と呼ばれる。</p>
-    <pre><code>
+        </code></pre>
+        <p>文章や見出し，画像などの<strong>コンテンツ</strong>は<strong>開始タグ</strong>と<strong>終了タグ</strong>で囲まれるか，<strong>自己終了タグ</strong>で表され<strong>HTML要素</strong>と呼ばれる。</p>
+        <pre><code class="language-html">
 &lt;要素名 属性1="値1" 属性2="値2" ...&gt;
     コンテンツ
 &lt;/要素名&gt;
 
 &lt;要素名 属性1="値1" 属性2="値2" ... /&gt;
-    </code></pre>
-    <p>利用可能なすべてのHTML要素は<a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element" target="_blank"> HTML 要素リファレンス - HTML | MDN</a>を参照のこと。</p>
-    <p>利用可能なすべてのHTML属性は<a href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Global_attributes" target="_blank">グローバル属性 - HTML | MDN</a>および<a href="https://developer.mozilla.org/ja/docs/Web/HTML/Attributes" target="_blank"> HTML 属性リファレンス - HTML | MDN</a>を参照のこと。</p>
+        </code></pre>
+        <p>利用可能なすべてのHTML要素は<a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element" target="_blank" rel="noopener noreferrer"> HTML 要素リファレンス - HTML | MDN</a>を参照のこと。</p>
+        <p>利用可能なすべてのHTML属性は<a href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Global_attributes" target="_blank" rel="noopener noreferrer">グローバル属性 - HTML | MDN</a>および<a href="https://developer.mozilla.org/ja/docs/Web/HTML/Attributes" target="_blank" rel="noopener noreferrer"> HTML 属性リファレンス - HTML | MDN</a>を参照のこと。</p>
 
-    <h2 id="elements">主なHTML要素</h2>
-    <p>ここではよく使われるHTML要素について簡単に説明する。アクセシビリティの観点から各コンテンツに対して適切なHTML要素を使用するべきである。</p>
-    <dl>
-        <dt><code>&lt;!DOCTYPE&gt;</code></dt>
-        <dd>文書型宣言である。「ほとんど役に立たないが，それでも必要な」要素である。</dd>
-        <dt><code>&lt;html&gt;</code></dt>
-        <dd>ページのすべてのコンテンツを囲む要素である。言語を設定する<code>lang</code>属性を持つ。</dd>
-        <dt><code>&lt;head&gt;</code></dt>
-        <dd>
-            ページの閲覧者に表示しないコンテンツを含む要素である。
-            <dl>
-                <dt><code>&lt;meta&gt;</code></dt>
-                <dd>
-                    ページのメタデータを定義する要素である。
-                    <dl>
-                        <dt><code>charset</code></dt>
-                        <dd>ページの文字エンコーディングを定義する属性である。</dd>
-                        <dt><code>name</code>と<code>content</code></dt>
-                        <dd>
-                            ページのメタデータを定義する属性である。
-                            <dl>
-                                <dt><code>name="viewport"</code></dt>
-                                <dd>ページのビューポートを定義する値である。</dd>
-                                <dt><code>name="author"</code></dt>
-                                <dd>ページの作成者を定義する値である。</dd>
-                                <dt><code>name="description"</code></dt>
-                                <dd>ページの説明を定義する値である。</dd>
-                            </dl>
-                        </dd>
-                        <dt><code>property</code>と<code>content</code></dt>
-                        <dd>
-                            Open Graph Protocolのプロパティを定義する属性である。
-                            <dl>
-                                <dt><code>property="og:title"</code></dt>
-                                <dd>ページのタイトルを定義する値である。</dd>
-                                <dt><code>property="og:description"</code></dt>
-                                <dd>ページの説明を定義する値である。</dd>
-                                <dt><code>property="og:image"</code></dt>
-                                <dd>ページの画像を定義する値である。</dd>
-                            </dl>
-                        </dd>
-                    </dl>
-                </dd>
-                <dt><code>&lt;link rel="" href=""&gt;</code></dt>
-                <dd>
-                    ページと外部リソースとの関係を定義する要素である。
-                    <dl>
-                        <dt><code>rel="icon"</code></dt>
-                        <dd>ページのアイコンを定義する値である。</dd>
-                        <dt><code>rel="apple-touch-icon"</code></dt>
-                        <dd>
-                            ページのApple Touch Iconを定義する値である。
-                            <dl>
-                                <dt><code>sizes="167x167"</code></dt>
-                                <dd>iPad Proの高解像度レティナ画面用のアイコンを定義する値である。</dd>
-                                <dt><code>sizes="180x180"</code></dt>
-                                <dd>3倍の解像度のiPhoneのアイコンを定義する値である。</dd>
-                                <dt><code>sizes="152x152"</code></dt>
-                                <dd>レティナでない端末のアイコンを定義する値である。</dd>
-                                <dt><code>sizes=""</code></dt>
-                                <dd>2倍の解像度のiPhoneおよびその他の端末のアイコンを定義する値である。</dd>
-                            </dl>
-                        </dd>
-                        <dt><code>rel="stylesheet"</code></dt>
-                        <dd>ページとスタイルを定義する値である。</dd>
-                    </dl>
-                </dd>
-                <dt><code>&lt;script src="" defer&gt;</code></dt>
-                <dd>ページにJavaScriptコードを埋め込む要素である。</dd>
-                <dt><code>&lt;title&gt;</code></dt>
-                <dd>ページのタイトルを定義する要素である。</dd>
-            </dl>
-        </dd>
-        <dt><code>&lt;body&gt;</code></dt>
-        <dd>
-            ページの閲覧者に表示されるコンテンツを含む要素である。
-            <dl>
-                <dt><code>&lt;header&gt;</code></dt>
-                <dd>ページのヘッダーを定義する要素である。</dd>
-                <dt><code>&lt;nav&gt;</code></dt>
-                <dd>ページのナビゲーション機能を定義する要素である。</dd>
-                <dt><code>&lt;main&gt;</code></dt>
-                <dd>ページの主要なコンテンツを定義する要素である。</dd>
-                <dt><code>&lt;section&gt;</code></dt>
-                <dd>ページのセクションを定義する要素である。</dd>
-                <dt><code>&lt;article&gt;</code></dt>
-                <dd>ページの記事部分を定義する要素である。</dd>
-                <dt><code>&lt;aside&gt;</code></dt>
-                <dd>ページの補足的な内容を定義する要素である。</dd>
-                <dt><code>&lt;footer&gt;</code></dt>
-                <dd>ページのフッターを定義する要素である。</dd>
-                <dt><code>&lt;div&gt;</code></dt>
-                <dd>ブロックレベルの意味的でない部分を定義する要素である。</dd>
-                <dt><code>&lt;span&gt;</code></dt>
-                <dd>インラインレベルの意味的でない部分を定義する要素である。</dd>
-                <dt><code>&lt;h1&gt;</code>から<code>&lt;h6&gt;</code></dt>
-                <dd>見出しを定義する要素である。数字が小さいほど重要な見出しである。</dd>
-                <dt><code>&lt;p&gt;</code></dt>
-                <dd>段落を定義する要素である。</dd>
-                <dt><code>&lt;em&gt;</code></dt>
-                <dd>強調されたテキスト（イタリック）を定義する要素である。</dd>
-                <dt><code>&lt;strong&gt;</code></dt>
-                <dd>重要なテキスト（太字）を定義する要素である。</dd>
-                <dt><code>&lt;a href=""&gt;</code></dt>
-                <dd>
-                    リンクを定義する要素である。
-                    <dl>
-                        <dt><code>href="https://example.com"</code></dt>
-                        <dd>外部リンクを定義する値である。</dd>
-                        <dt><code>href="page.html"</code></dt>
-                        <dd>同じディレクトリへの内部リンクを定義する値である。</dd>
-                        <dt><code>href="subdirectory/page.html"</code></dt>
-                        <dd>サブディレクトリへの内部リンクを定義する値である。</dd>
-                        <dt><code>href="../page.html"</code></dt>
-                        <dd>親ディレクトリへの内部リンクを定義する値である。</dd>
-                        <dt><code>href="#section-id"</code></dt>
-                        <dd><code>&lt;id="section-id"&gt;</code>属性を持つ要素へのリンクを定義する値である。</dd>
-                        <dt><code>href="mailto:example@example.com"</code></dt>
-                        <dd>メールアドレスへのリンクを定義する値である。</dd>
-                        <dt><code>target="_blank"</code></dt>
-                        <dd>リンク先を新しいタブで開く値である。</dd>
-                    </dl>
-                </dd>
-                <dt><code>&lt;ul&gt;</code>と<code>&lt;li&gt;</code></dt>
-                <dd>順不同リストを定義する要素である。</dd>
-                <dt><code>&lt;ol&gt;</code>と<code>&lt;li&gt;</code></dt>
-                <dd>順序付きリストを定義する要素である。</dd>
-                <dt><code>&lt;dl&gt;</code>と<code>&lt;dt&gt;</code>，<code>&lt;dd&gt;</code></dt>
-                <dd>説明リストを定義する要素である。</dd>
-                <dt><code>&lt;blockquote cite=""&gt;</code></dt>
-                <dd>ブロック引用を定義する要素である。</dd>
-                <dt><code>&lt;q cite=""&gt;</code></dt>
-                <dd>インライン引用を定義する要素である。</dd>
-                <dt><code>&lt;abbr title=""&gt;</code></dt>
-                <dd>省略語を定義する要素である。</dd>
-                <dt><code>&lt;address&gt;</code></dt>
-                <dd>連絡先情報を定義する要素である。</dd>
-                <dt><code>&lt;sup&gt;</code>と<code>&lt;sub&gt;</code></dt>
-                <dd>上付き文字と下付き文字を定義する要素である。</dd>
-                <dt><code>&lt;code&gt;</code></dt>
-                <dd>コードを定義する要素である。</dd>
-                <dt><code>&lt;pre&gt;</code></dt>
-                <dd>コードブロックを定義する要素である。</dd>
-                <dt><code>&lt;var&gt;</code></dt>
-                <dd>変数名のマークアップ定義する要素である。</dd>
-                <dt><code>&lt;kbd&gt;</code></dt>
-                <dd>キーボード入力のマークアップを定義する要素である。</dd>
-                <dt><code>&lt;samp&gt;</code></dt>
-                <dd>コンピュータの出力のマークアップを定義する要素である。</dd>
-                <dt><code>&lt;time datetime=""&gt;</code></dt>
-                <dd>
-                    日時や時刻を定義する要素である。
-                    <dl>
-                        <dt><code>datetime="2016-01-20"</code></dt>
-                        <dd>単純な標準的な日付を定義する値である。</dd>
-                        <dt><code>datetime="2016-01-20T19:30+01:00"</code></dt>
-                        <dd>タイムゾーン付きの日付と時刻を定義する値である。</dd>
-                        <dt><code>datetime="2016-W04"</code></dt>
-                        <dd>特定の週番号を定義する値である。</dd>
-                    </dl>
-                </dd>
-                <dt><code>&lt;img src="" alt="" width="" height="" /&gt;</code></dt>
-                <dd>画像を定義する要素である。</dd>
-                <dt><code>&lt;table&gt;</code></dt>
-                <dd>
-                    テーブルを定義する要素である。
-                    <dl>
-                        <dt><code>&lt;tr&gt;</code></dt>
-                        <dd>テーブルの行を定義する要素である。</dd>
-                        <dt><code>&lt;td&gt;</code></dt>
-                        <dd>テーブルのデータセルを定義する要素である。</dd>
-                        <dt><code>&lt;th&gt;</code></dt>
-                        <dd>
-                            テーブルの見出しセルを定義する要素である。
-                            <dl>
-                                <dt><code>colspan=""</code></dt>
-                                <dd>列の結合数を定義する値である。</dd>
-                                <dt><code>rowspan=""</code></dt>
-                                <dd>行の結合数を定義する値である。</dd>
-                                <dt><code>scope="col"</code></dt>
-                                <dd>列の見出しを定義する値である。</dd>
-                                <dt><code>scope="row"</code></dt>
-                                <dd>行の見出しを定義する値である。</dd>
-                            </dl>
-                        </dd>
-                        <dt><code>&lt;caption&gt;</code></dt>
-                        <dd>テーブルのキャプションを定義する要素である。</dd>
-                        <dt><code>&lt;thead&gt;</code></dt>
-                        <dd>テーブルのヘッダーを定義する要素である。</dd>
-                        <dt><code>&lt;tbody&gt;</code></dt>
-                        <dd>テーブルの本体を定義する要素である。</dd>
-                        <dt><code>&lt;tfoot&gt;</code></dt>
-                        <dd>テーブルのフッターを定義する要素である。</dd>
-                    </dl>
-                </dd>
-                <dt><code>&lt;figure&gt;</code>と<code>&lt;figcaption&gt;</code></dt>
-                <dd>キャプション付きの画像や図表などを定義する要素である。</dd>
-                <dt><code>&lt;br&gt;</code></dt>
-                <dd>改行を定義する要素である。</dd>
-                <dt><code>&lt;hr&gt;</code></dt>
-                <dd>水平線を定義する要素である。</dd>
-                <dt><code>&lt;button&gt;</code></dt>
-                <dd>インタラクティブなボタンを定義する要素である。</dd>
-                <dt><code>&lt;form&gt;</code></dt>
-                <dd>フォームを定義する要素である。</dd>
-            </dl>
-        </dd>
-    </dl>
+        <h2 id="elements">主なHTML要素</h2>
+        <p>ここではよく使われるHTML要素について簡単に説明する。アクセシビリティの観点から各コンテンツに対して適切なHTML要素を使用するべきである。</p>
+        <dl>
+            <dt><code>&lt;!DOCTYPE html&gt;</code></dt>
+            <dd>文書型宣言である。「ほとんど役に立たないが，それでも必要な」宣言である。</dd>
+            <dt><code>&lt;html&gt;</code></dt>
+            <dd>ページのすべてのコンテンツを囲む要素である。言語を設定する<code>lang</code>属性を持つ。</dd>
+            <dt><code>&lt;head&gt;</code></dt>
+            <dd>
+                ページの閲覧者に表示しないコンテンツを含む要素である。
+                <dl>
+                    <dt><code>&lt;meta&gt;</code></dt>
+                    <dd>
+                        ページのメタデータを定義する要素である。
+                        <dl>
+                            <dt><code>charset</code></dt>
+                            <dd>ページの文字エンコーディングを定義する属性である。</dd>
+                            <dt><code>name</code>と<code>content</code></dt>
+                            <dd>
+                                ページのメタデータを定義する属性である。
+                                <dl>
+                                    <dt><code>name="viewport"</code></dt>
+                                    <dd>ページのビューポートを定義する値である。</dd>
+                                    <dt><code>name="author"</code></dt>
+                                    <dd>ページの作成者を定義する値である。</dd>
+                                    <dt><code>name="description"</code></dt>
+                                    <dd>ページの説明を定義する値である。</dd>
+                                </dl>
+                            </dd>
+                            <dt><code>property</code>と<code>content</code></dt>
+                            <dd>
+                                Open Graph Protocolのプロパティを定義する属性である。
+                                <dl>
+                                    <dt><code>property="og:title"</code></dt>
+                                    <dd>ページのタイトルを定義する値である。</dd>
+                                    <dt><code>property="og:description"</code></dt>
+                                    <dd>ページの説明を定義する値である。</dd>
+                                    <dt><code>property="og:image"</code></dt>
+                                    <dd>ページの画像を定義する値である。</dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </dd>
+                    <dt><code>&lt;link rel="" href=""&gt;</code></dt>
+                    <dd>
+                        ページと外部リソースとの関係を定義する要素である。
+                        <dl>
+                            <dt><code>rel="icon"</code></dt>
+                            <dd>ページのアイコンを定義する値である。</dd>
+                            <dt><code>rel="apple-touch-icon"</code></dt>
+                            <dd>
+                                ページのApple Touch Iconを定義する値である。
+                                <dl>
+                                    <dt><code>sizes="167x167"</code></dt>
+                                    <dd>iPad Proの高解像度レティナ画面用のアイコンを定義する値である。</dd>
+                                    <dt><code>sizes="180x180"</code></dt>
+                                    <dd>3倍の解像度のiPhoneのアイコンを定義する値である。</dd>
+                                    <dt><code>sizes="152x152"</code></dt>
+                                    <dd>レティナでない端末のアイコンを定義する値である。</dd>
+                                    <dt><code>sizes=""</code></dt>
+                                    <dd>2倍の解像度のiPhoneおよびその他の端末のアイコンを定義する値である。</dd>
+                                </dl>
+                            </dd>
+                            <dt><code>rel="stylesheet"</code></dt>
+                            <dd>ページとスタイルを定義する値である。</dd>
+                        </dl>
+                    </dd>
+                    <dt><code>&lt;script src="" defer&gt;</code></dt>
+                    <dd>ページにJavaScriptコードを埋め込む要素である。</dd>
+                    <dt><code>&lt;title&gt;</code></dt>
+                    <dd>ページのタイトルを定義する要素である。</dd>
+                </dl>
+            </dd>
+            <dt><code>&lt;body&gt;</code></dt>
+            <dd>
+                ページの閲覧者に表示されるコンテンツを含む要素である。
+                <dl>
+                    <dt><code>&lt;header&gt;</code></dt>
+                    <dd>ページのヘッダーを定義する要素である。</dd>
+                    <dt><code>&lt;nav&gt;</code></dt>
+                    <dd>ページのナビゲーション機能を定義する要素である。</dd>
+                    <dt><code>&lt;main&gt;</code></dt>
+                    <dd>ページの主要なコンテンツを定義する要素である。</dd>
+                    <dt><code>&lt;section&gt;</code></dt>
+                    <dd>ページのセクションを定義する要素である。</dd>
+                    <dt><code>&lt;article&gt;</code></dt>
+                    <dd>ページの記事部分を定義する要素である。</dd>
+                    <dt><code>&lt;aside&gt;</code></dt>
+                    <dd>ページの補足的な内容を定義する要素である。</dd>
+                    <dt><code>&lt;footer&gt;</code></dt>
+                    <dd>ページのフッターを定義する要素である。</dd>
+                    <dt><code>&lt;div&gt;</code></dt>
+                    <dd>ブロックレベルの意味的でない部分を定義する要素である。</dd>
+                    <dt><code>&lt;span&gt;</code></dt>
+                    <dd>インラインレベルの意味的でない部分を定義する要素である。</dd>
+                    <dt><code>&lt;h1&gt;</code>から<code>&lt;h6&gt;</code></dt>
+                    <dd>見出しを定義する要素である。数字が小さいほど重要な見出しである。</dd>
+                    <dt><code>&lt;p&gt;</code></dt>
+                    <dd>段落を定義する要素である。</dd>
+                    <dt><code>&lt;em&gt;</code></dt>
+                    <dd>強調されたテキスト（イタリック）を定義する要素である。</dd>
+                    <dt><code>&lt;strong&gt;</code></dt>
+                    <dd>重要なテキスト（太字）を定義する要素である。</dd>
+                    <dt><code>&lt;a href=""&gt;</code></dt>
+                    <dd>
+                        リンクを定義する要素である。
+                        <dl>
+                            <dt><code>href="https://example.com"</code></dt>
+                            <dd>外部リンクを定義する値である。</dd>
+                            <dt><code>href="page.html"</code></dt>
+                            <dd>同じディレクトリへの内部リンクを定義する値である。</dd>
+                            <dt><code>href="subdirectory/page.html"</code></dt>
+                            <dd>サブディレクトリへの内部リンクを定義する値である。</dd>
+                            <dt><code>href="../page.html"</code></dt>
+                            <dd>親ディレクトリへの内部リンクを定義する値である。</dd>
+                            <dt><code>href="#section-id"</code></dt>
+                            <dd><code>id="section-id"</code>属性を持つ要素へのリンクを定義する値である。</dd>
+                            <dt><code>href="mailto:example@example.com"</code></dt>
+                            <dd>メールアドレスへのリンクを定義する値である。</dd>
+                            <dt><code>target="_blank"</code></dt>
+                            <dd>リンク先を新しいタブで開く値である。</dd>
+                        </dl>
+                    </dd>
+                    <dt><code>&lt;ul&gt;</code>と<code>&lt;li&gt;</code></dt>
+                    <dd>順不同リストを定義する要素である。</dd>
+                    <dt><code>&lt;ol&gt;</code>と<code>&lt;li&gt;</code></dt>
+                    <dd>順序付きリストを定義する要素である。</dd>
+                    <dt><code>&lt;dl&gt;</code>と<code>&lt;dt&gt;</code>，<code>&lt;dd&gt;</code></dt>
+                    <dd>説明リストを定義する要素である。</dd>
+                    <dt><code>&lt;blockquote cite=""&gt;</code></dt>
+                    <dd>ブロック引用を定義する要素である。</dd>
+                    <dt><code>&lt;q cite=""&gt;</code></dt>
+                    <dd>インライン引用を定義する要素である。</dd>
+                    <dt><code>&lt;abbr title=""&gt;</code></dt>
+                    <dd>省略語を定義する要素である。</dd>
+                    <dt><code>&lt;address&gt;</code></dt>
+                    <dd>連絡先情報を定義する要素である。</dd>
+                    <dt><code>&lt;sup&gt;</code>と<code>&lt;sub&gt;</code></dt>
+                    <dd>上付き文字と下付き文字を定義する要素である。</dd>
+                    <dt><code>&lt;code&gt;</code></dt>
+                    <dd>コードを定義する要素である。</dd>
+                    <dt><code>&lt;pre&gt;</code></dt>
+                    <dd>コードブロックを定義する要素である。</dd>
+                    <dt><code>&lt;var&gt;</code></dt>
+                    <dd>変数名のマークアップ定義する要素である。</dd>
+                    <dt><code>&lt;kbd&gt;</code></dt>
+                    <dd>キーボード入力のマークアップを定義する要素である。</dd>
+                    <dt><code>&lt;samp&gt;</code></dt>
+                    <dd>コンピュータの出力のマークアップを定義する要素である。</dd>
+                    <dt><code>&lt;time datetime=""&gt;</code></dt>
+                    <dd>
+                        日時や時刻を定義する要素である。
+                        <dl>
+                            <dt><code>datetime="2016-01-20"</code></dt>
+                            <dd>単純な標準的な日付を定義する値である。</dd>
+                            <dt><code>datetime="2016-01-20T19:30+01:00"</code></dt>
+                            <dd>タイムゾーン付きの日付と時刻を定義する値である。</dd>
+                            <dt><code>datetime="2016-W04"</code></dt>
+                            <dd>特定の週番号を定義する値である。</dd>
+                        </dl>
+                    </dd>
+                    <dt><code>&lt;img src="" alt="" width="" height="" /&gt;</code></dt>
+                    <dd>画像を定義する要素である。</dd>
+                    <dt><code>&lt;table&gt;</code></dt>
+                    <dd>
+                        テーブルを定義する要素である。
+                        <dl>
+                            <dt><code>&lt;tr&gt;</code></dt>
+                            <dd>テーブルの行を定義する要素である。</dd>
+                            <dt><code>&lt;td&gt;</code></dt>
+                            <dd>テーブルのデータセルを定義する要素である。</dd>
+                            <dt><code>&lt;th&gt;</code></dt>
+                            <dd>
+                                テーブルの見出しセルを定義する要素である。
+                                <dl>
+                                    <dt><code>colspan=""</code></dt>
+                                    <dd>列の結合数を定義する値である。</dd>
+                                    <dt><code>rowspan=""</code></dt>
+                                    <dd>行の結合数を定義する値である。</dd>
+                                    <dt><code>scope="col"</code></dt>
+                                    <dd>列の見出しを定義する値である。</dd>
+                                    <dt><code>scope="row"</code></dt>
+                                    <dd>行の見出しを定義する値である。</dd>
+                                </dl>
+                            </dd>
+                            <dt><code>&lt;caption&gt;</code></dt>
+                            <dd>テーブルのキャプションを定義する要素である。</dd>
+                            <dt><code>&lt;thead&gt;</code></dt>
+                            <dd>テーブルのヘッダーを定義する要素である。</dd>
+                            <dt><code>&lt;tbody&gt;</code></dt>
+                            <dd>テーブルの本体を定義する要素である。</dd>
+                            <dt><code>&lt;tfoot&gt;</code></dt>
+                            <dd>テーブルのフッターを定義する要素である。</dd>
+                        </dl>
+                    </dd>
+                    <dt><code>&lt;figure&gt;</code>と<code>&lt;figcaption&gt;</code></dt>
+                    <dd>キャプション付きの画像や図表などを定義する要素である。</dd>
+                    <dt><code>&lt;br&gt;</code></dt>
+                    <dd>改行を定義する要素である。</dd>
+                    <dt><code>&lt;hr&gt;</code></dt>
+                    <dd>水平線を定義する要素である。</dd>
+                    <dt><code>&lt;button&gt;</code></dt>
+                    <dd>インタラクティブなボタンを定義する要素である。</dd>
+                    <dt><code>&lt;form&gt;</code></dt>
+                    <dd>フォームを定義する要素である。</dd>
+                </dl>
+            </dd>
+        </dl>
 
-    <h2 id="references">参考文献</h2>
-    <ul>
-        <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Structuring_content" target="_blank">HTML によるコンテンツの構造化 - ウェブ開発の学習 | MDN</a></li>
-    </ul>
+        <h2 id="references">参考文献</h2>
+        <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Structuring_content" target="_blank" rel="noopener noreferrer">HTML によるコンテンツの構造化 - ウェブ開発の学習 | MDN</a></li>
+        </ul>
+    </main>
+    <aside>
+        <h3>更新履歴</h3>
+        <p><time datetime="2026-05-03">2026/05/03</time>: ver.0.1</p>
+        <p><time datetime="2026-05-05">2026/05/05</time>: ver.0.2</p>
+        <p><time datetime="2026-05-06">2026/05/06</time>: ver.0.3</p>
+        <p><a href="#top">TOPへ戻る</a></p>
+    </aside>
+    <div class="ad">
+        広告
+    </div>
+    <footer>
+        &copy; 2026 Sone. All rights reserved.
+    </footer>
 </body>
 </html>
