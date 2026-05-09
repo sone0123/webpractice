@@ -27,7 +27,425 @@
     </nav>
     <main>
         <h1>JavaScript</h1>
-        <p><strong>JavaScript</strong>とはウェブページに複雑な機能を実装することを可能にするスクリプトまたはプログラミング言語である。</p>
+        <p><strong>JavaScript</strong>とはウェブページに複雑な機能を実装することを可能にする軽量なインタプリタ型プログラミング言語である。</p>
+        <p>JavaScriptの一般的な用途は，DOM (Document Object Model) APIを介して動的にHTML/CSSを変更し，UIを更新することである。</p>
+        <p>JavaScriptはクライアントサーバーコードとしても，サーバーサイドコードとしても使用される。</p>
+        <h2>目次</h2>
+        <ul>
+            <li><a href="#usage">JavaScriptの使い方</a></li>
+            <li><a href="#writing">JavaScriptコードの書き方</a></li>
+            <ul>
+                <li><a href="#before-you-start">書き始める前に</a></li>
+                <li><a href="#variables-and-constants">変数と定数</a></li>
+                <li><a href="#functions">関数</a></li>
+                <li><a href="#events">イベント</a></li>
+                <li><a href="#basic-operations">基本演算</a></li>
+                <li><a href="#strings">文字列</a></li>
+                <li><a href="#arrays">配列</a></li>
+                <li><a href="#objects">オブジェクト</a></li>
+                <li><a href="#conditional-statements">条件文</a></li>
+                <li><a href="#loops">ループ</a></li>
+                <li><a href="#dom-manipulation">DOM操作</a></li>
+                <li><a href="#error-handling">エラー処理</a></li>
+                <li><a href="#reference">リファレンス</a></li>
+            </ul>
+            <li><a href="#references">参考文献</a></li>
+        </ul>
+        <h2 id="usage">JavaScriptの使い方</h2>
+        <h3>内部JavaScript</h3>
+        <p>HTMLファイルの<code>&lt;/body&gt;</code>タグの直前に直接記述する。</p>
+        <pre><code class="language-html">
+&lt;script&gt;
+    // JavaScriptコードをここに書く
+&lt;/script&gt;
+        </code></pre>
+        <h3>外部JavaScript</h3>
+        <p><code>.js</code>ファイルを作成しHTMLファイルの<code>&lt;/head&gt;</code>タグの直前で読み込む。</p>
+        <pre><code class="language-html">
+// JavaScriptモジュールとして読み込む場合
+&lt;script type="module" src="script.js"&gt;&lt;/script&gt;
+
+// HTMLの構文解析後かつDOMContentLoadedイベントの前に実行する場合
+&lt;script defer src="script.js"&gt;&lt;/script&gt;
+        </code></pre>
+
+        <h2 id="writing">JavaScriptコードの書き方</h2>
+        <p>基本的なJavaScriptコードの書き方について説明する。</p>
+        <h3 id="before-you-start">書き始める前に</h3>
+        <p>コードを書き始める前に，まず解決したい問題を簡潔に実行可能な小さな単位に分割することが重要である。</p>
+        <h3 id="variables-and-constants">変数と定数</h3>
+        <p>必要な変数と定数を宣言する。可能な限り定数を使用し，必要に応じて変数を使用する。</p>
+        <pre><code class="language-javascript">
+// 変数の宣言
+let x;
+let y = 10; // 変数の初期化
+
+// 定数の宣言
+const PI = 3.14159; // 定数は必ず初期化する必要がある
+        </code></pre>
+        <h4>変数と定数の命名規則</h4>
+        <p>変数と定数の名前付けは以下のルールに従うべきである：</p>
+        <ul>
+            <li>アルファベットと数字とアンダースコアのみを使用する</li>
+            <li>先頭にアンダースコアを使用しない</li>
+            <li>先頭に数字を使用しない</li>
+            <li>小文字で始まるキャメルケースを使用する</li>
+            <li>JavaScriptの予約語を使用しない</li>
+            <li>分かりやすい名前を使用する</li>
+        </ul>
+        <h4>変数の型</h4>
+        <p>変数には以下の基本的な型がある：</p>
+        <ul>
+            <li>数値型（number）
+            <li>文字列型（string）
+            <li>論理型（boolean）
+            <li>配列型（array）
+            <li>オブジェクト型（object）
+        </ul>
+        <h3 id="functions">関数</h3>
+        <p>関数は再利用可能なコードブロックである。</p>
+        <pre><code class="language-javascript">
+// 関数の定義
+function functionName(parameter1, parameter2, ...) {
+    // 関数f(parameter1, parameter2, ...)の本体
+    return value; // 関数が値を返す場合
+}
+
+// 関数の呼び出し
+functionName(value1, value2, ...);
+        </code></pre>
+        <h4>メソッド</h4>
+        <p>メソッドはオブジェクトのプロパティとして定義された関数である。</p>
+        <pre><code class="language-javascript">
+// メソッドの定義
+const myObject = {
+    myMethod: function() {
+        // メソッドの本体
+    }
+};
+
+// メソッドの呼び出し
+myObject.myMethod();
+        </code></pre>
+        <h4>ブラウザ組み込み関数</h4>
+        <p>一部の関数はブラウザのコード（大半はC++のような低レベルのシステム言語で書かれている）を呼び出して使用することができる。</p>
+        <pre><code class="language-javascript">
+// random()関数は0から1までの乱数を生成するブラウザ組み込み関数である
+const myNumber = Math.random();
+        </code></pre>
+        <h4>無名関数</h4>
+        <p>無名関数は名前を持たない関数である。定義と同時に呼び出される。</p>
+        <pre><code class="language-javascript">
+// 無名関数の定義と呼び出し
+function(parameter1, parameter2, ...) {
+    // 関数f(parameter1, parameter2, ...)の本体
+};
+        </code></pre>
+        <h4>アロー関数</h4>
+        <p>アロー関数はES6で導入された新しい関数の記法である。</p>
+        <pre><code class="language-javascript">
+// アロー関数の定義と呼び出し
+(parameter1, parameter2, ...) => {
+    // 関数f(parameter1, parameter2, ...)の本体
+};
+        </code></pre>
+        <h4>関数のスコープ</h4>
+        <p>関数内で定義されている変数や関数は内部にスコープ（適用範囲）を持ち，外部からはアクセスできない。すべての関数の外にある最上位のスコープをグローバルスコープという。</p>
+
+        <h3 id="events">イベント</h3>
+        <p>イベントはユーザーの操作やブラウザの状態変化など，ブラウザ内で発生する出来事である。</p>
+        <ul>
+            <li>選択する</li>
+            <li>クリックする</li>
+            <li>カーソルを合わせる</li>
+            <li>特定のキーを押す</li>
+            <li>ページを読み込む</li>
+            <li>ページを閉じる</li>
+            <li>フォームを送信する</li>
+            <li>エラーが発生する</li>
+        </ul>
+        <h4>イベントリスナー</h4>
+        <p>イベントリスナーは特定のイベントが発生したときに実行される関数である。イベントを持つHTML要素は<code>addEventListener()</code>メソッドを使用してイベントリスナーを追加することができる。</p>
+        <pre><code class="language-javascript">
+// 特定のセレクターに一致する最初のHTML要素を取得する
+const elementName = document.querySelector("selector");
+
+// イベントリスナーの定義
+elementName.addEventListener("event", (parameter1, parameter2, ...) => {
+    // 関数f(parameter1, parameter2, ...)の本体
+});
+        </code></pre>
+        <h3 id="basic-operations">基本演算</h3>
+        <h4>算術演算子</h4>
+        <p>各演算は通常の数学と同様である。</p>
+        <ul>
+            <li><code>+</code>: 加算</li>
+            <li><code>-</code>: 減算</li>
+            <li><code>*</code>: 乗算</li>
+            <li><code>/</code>: 除算</li>
+            <li><code>%</code>: 剰余</li>
+            <li><code>**</code>: 累乗</li>
+        </ul>
+        <h4>インクリメント演算子とデクリメント演算子</h4>
+        <ul>
+            <li><code>++</code>: インクリメント演算子。変数の値を1増加させる。</li>
+            <li><code>--</code>: デクリメント演算子。変数の値を1減少させる。</li>
+        </ul>
+        <h4>代入演算子</h4>
+        <ul>
+            <li><code>=</code>: 代入</li>
+            <li><code>+=</code>: 右辺を左辺に加算して代入</li>
+            <li><code>-=</code>: 右辺を左辺から減算して代入</li>
+            <li><code>*=</code>: 右辺を左辺に乗算して代入</li>
+            <li><code>/=</code>: 右辺を左辺に除算して代入</li>
+        </ul>
+        <h4>比較演算子</h4>
+        <p>比較演算子は値を比較して真（true）または偽（false）を返す。</p>
+        <ul>
+            <li><code>==</code>: 等しい</li>
+            <li><code>!=</code>: 等しくない</li>
+            <li><code>===</code>: 厳密に等しい（型も含めて）</li>
+            <li><code>!==</code>: 厳密に等しくない</li>
+            <li><code>&lt;</code>: より小さい</li>
+            <li><code>&gt;</code>: より大きい</li>
+            <li><code>&lt;=</code>: 以下</li>
+            <li><code>&gt;=</code>: 以上</li>
+        </ul>
+        <h3 id="strings">文字列</h3>
+        <h4>変数の埋め込み</h4>
+        <p>文字列の中に変数の値を埋め込むにはテンプレートリテラルを使用する。</p>
+        <pre><code class="language-javascript">
+const name = "Alice";
+const greeting = `Hello, ${name}!`;
+        </code></pre>
+        <h4>改行</h4>
+        <p>文字列内で改行するにはテンプレートリテラルを使用するか<code>\n</code>を使用する。</p>
+        <pre><code class="language-javascript">
+// テンプレートリテラルを使用する場合
+const multiLineString = `This is a string
+that spans multiple lines.`;
+
+// \nを使用する場合
+const multiLineStringWithNewline = "This is a string\nthat spans multiple lines.";
+        </code></pre>
+        <h4>引用符</h4>
+        <p>文字列を囲むには次のようにシングルクォート（'）またはダブルクォート（"）を使用する。</p>
+        <pre><code class="language-javascript">
+const singleQuoteString = 'This is a string with single quotes.';
+const doubleQuoteString = "This is a string with double quotes.";
+        </code></pre>
+        <h4>便利なメソッド</h4>
+        <dl>
+            <dt><code>.length</code></dt>
+            <dd>文字列の長さを返す</dd>
+            <dt><code>[index]</code></dt>
+            <dd>指定したインデックスの文字を返す</dd>
+            <dt><code>.includes(searchString)</code></dt>
+            <dd>指定した文字列が含まれているかどうかを判定する</dd>
+            <dt><code>.indexOf(searchString)</code></dt>
+            <dd>指定した文字列が最初に現れるインデックスを返す。見つからない場合は-1を返す</dd>
+            <dt><code>.slice(start, end)</code></dt>
+            <dd>指定した範囲の文字列を抽出する</dd>
+            <dt><code>.toUpperCase()</code></dt>
+            <dd>文字列を大文字に変換する</dd>
+            <dt><code>.toLowerCase()</code></dt>
+            <dd>文字列を小文字に変換する</dd>
+            <dt><code>.replace(searchValue, newValue)</code></dt>
+            <dd>指定した文字列を新しい文字列に置換する</dd>
+            <dt><code>.split(separator)</code></dt>
+            <dd>文字列を指定した区切り文字で分割して配列を返す</dd>
+        </dl>
+        <h3 id="arrays">配列</h3>
+        <p>配列は複数の値を格納するためのデータ構造である。</p>
+        <pre><code class="language-javascript">
+const myArray = [element1, element2, element3];
+        </code></pre>
+        <h4>便利なメソッド</h4>
+        <dl>
+            <dt><code>.length</code></dt>
+            <dd>配列の長さを返す</dd>
+            <dt><code>[index]</code></dt>
+            <dd>指定したインデックスの要素を返す</dd>
+            <dt><code>.push(element)</code></dt>
+            <dd>配列の末尾に要素を追加する</dd>
+            <dt><code>.pop()</code></dt>
+            <dd>配列の末尾の要素を削除して返す</dd>
+            <dt><code>.shift()</code></dt>
+            <dd>配列の先頭の要素を削除して返す</dd>
+            <dt><code>.splice(start, deleteCount)</code></dt>
+            <dd>配列の指定した位置から要素を削除する</dd>
+            <dt><code>.unshift(element)</code></dt>
+            <dd>配列の先頭に要素を追加する</dd>
+            <dt><code>.indexOf(element)</code></dt>
+            <dd>指定した要素が最初に現れるインデックスを返す。見つからない場合は-1を返す</dd>
+            <dt><code>.slice(start, end)</code></dt>
+            <dd>指定した範囲の要素を抽出する</dd>
+            <dt><code>.join(separator)</code></dt>
+            <dd>配列の要素を指定した区切り文字で連結して文字列を返す</dd>
+            <dt><code>.map(callback)</code></dt>
+            <dd>配列の各要素に対して指定した関数を呼び出して新しい配列を返す</dd>
+            <dt><code>.filter(callback)</code></dt>
+            <dd>配列の各要素に対して指定した関数を呼び出して条件を満たす要素の新しい配列を返す</dd>
+            <dt><code>.toString()</code></dt>
+            <dd>配列を文字列に変換する</dd>
+        </dl>
+        <h3 id="objects">オブジェクト型</h3>
+        <p>オブジェクト型とは関連する変数や関数型集合である。</p>
+        <pre><code class="language-javascript">
+const objectName = {
+    member1Name: member1Value,
+    member2Name: member2Value,
+    member3Name: member3Value,
+};
+        </code></pre>
+        <h4>ドット記法とブラケット記法</h4>
+        <p>オブジェクトのプロパティにアクセスするには次の2種類の記法を使用する。</p>
+        <ul>
+            <li>ドット記法: <code>objectName.memberName</code></li>
+            <li>ブラケット記法: <code>objectName["memberName"]</code></li>
+        </ul>
+        <h4>this</h4>
+        <p><code>this</code>はオブジェクトのプロパティやメソッド内で使用される特別なキーワードである。</p>
+        <pre><code class="language-javascript">
+const myObject = {
+    myProperty: "Hello",
+    myMethod: function() {
+        console.log(this.myProperty); // "Hello"と出力される
+    }
+};
+        </code></pre>
+        <h4>コンストラクター</h4>
+        <p>コンストラクターはオブジェクトを作成するための関数である。大文字で始まる名前を持ち<code>new</code>を使用して呼び出す。</p>
+        <pre><code class="language-javascript">
+// コンストラクターの定義
+function ConstructorName(parameter1, parameter2, ...) {
+    this.member1Name = parameter1;
+    this.member2Name = parameter2;
+    // ...
+}
+
+// コンストラクターを使用してオブジェクトを作成する
+const myObject = new ConstructorName(value1, value2, ...);
+        </code></pre>
+        <h3 id="conditional-statements">条件文</h3>
+        <h4>if文</h4>
+        <pre><code class="language-javascript">
+if (条件1) {
+    // 条件1が真の場合に実行されるコード
+} else if (条件2 && 条件3) {
+    // 条件2かつ条件3が真の場合に実行されるコード
+} else if (条件4 || 条件5) {
+    // 条件4または条件5が真の場合に実行されるコード
+} else {
+    // すべての条件が偽の場合に実行されるコード
+}
+        </code></pre>
+        <h4>switch文</h4>
+        <pre><code class="language-javascript">
+switch (expression) {
+    case value1:
+        // expressionがvalue1と等しい場合に実行されるコード
+    case value2:
+        // expressionがvalue2と等しい場合に実行されるコード
+        break; // 次のcaseを実行せずにswitch文を終了する
+    default:
+        // 既定で実行されるコード
+}
+        </code></pre>
+        <h4>三項演算子</h4>
+        <pre><code class="language-javascript">
+条件
+    ? value1 // 条件が真の場合に返される値
+    : value2; // 条件が偽の場合に返される値
+        </code></pre>
+        <h3 id="loops">ループ</h3>
+        <h4>forループ</h4>
+        <pre><code class="language-javascript">
+for (初期条件; 条件; 最後に実行される式) {
+    // ループの本体
+}
+        </code></pre>
+        <h4>for...ofループ</h4>
+        <pre><code class="language-javascript">
+const elements = [element1, element2, element3];
+
+for (const element of elements) {
+    // elementsの各要素に対して実行されるコード
+    if (条件) {
+        break; // ループを終了する
+    }
+    if (条件) {
+        continue; // ループの次の反復に進む
+    }
+    // continueが実行されない場合に実行されるコード
+}
+        </code></pre>
+        <h4>whileループ</h4>
+        <pre><code class="language-javascript">
+while (条件) {
+    // 条件が真の間繰り返し実行されるコード
+    // 最終的に条件が偽になるようにする必要がある
+}
+        </code></pre>
+        <h4>do...whileループ</h4>
+        <pre><code class="language-javascript">
+do {
+    // 最低限1回は実行されるコード
+} while (条件);
+        </code></pre>
+        <h3 id="dom-manipulation">DOM操作</h3>
+        <h4>要素の参照</h4>
+        <pre><code class="language-javascript">
+// 特定のセレクターに一致する最初のHTML要素を取得する
+const elementName = document.querySelector("selector");
+// 特定のセレクターに一致するすべてのHTML要素を取得する
+const elements = document.querySelectorAll("selector");
+        </code></pre>
+        <h4>要素の内容の変更</h4>
+        <pre><code class="language-javascript">
+// 要素のコンテンツを変更する
+elementName.textContent = "New text content";
+// 要素の属性を変更する
+elementName.href = "https://example.com";
+        </code></pre>
+        <h4>要素のスタイルの変更</h4>
+        <pre><code class="language-javascript">
+// 要素のスタイルを変更する
+elementName.style.color = "red";
+        </code></pre>
+        <h4>要素の追加</h4>
+        <pre><code class="language-javascript">
+// 新しい要素を定義する
+const newElement = document.createElement("div");
+// 新しい要素の内容を設定する
+newElement.textContent = "This is a new element.";
+// 既存の要素に子要素として追加する
+elementName.appendChild(newElement);
+        </code></pre>
+        <h4>要素の削除</h4>
+        <pre><code class="language-javascript">
+// 既存の要素から子要素を削除する
+elementName.remove();
+        </code></pre>
+        <h3 id="error-handling">エラー処理</h3>
+        <pre><code class="language-javascript">
+try {
+    // エラーが発生する可能性のあるコード
+} catch (error) {
+    // エラーが発生した場合に実行されるコード
+    console.error(error); // エラーをコンソールに出力する
+    // 必要に応じてエラーを処理する
+} finally {
+    // エラーの有無にかかわらず常に実行されるコード
+}
+        </code></pre>
+        <h3 id="reference">リファレンス</h3>
+        <p>JavaScriptの利用可能なすべての組み込みオブジェクトのプロパティ・メソッドや文法の詳細などは<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference#クラス" target="_blank" rel="noopener noreferrer">JavaScript リファレンス - JavaScript | MDN</a>を参照のこと。</p>
+
+        <h2 id="references">参考文献</h2>
+        <ul>
+            <li><a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Scripting" target="_blank" rel="noopener noreferrer">JavaScriptによる動的スクリプティング - ウェブ開発の学習 | MDN</a></li>
+        </ul>
     </main>
     <aside>
         <h3>更新履歴</h3>
